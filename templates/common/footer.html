@@ -1,0 +1,31 @@
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    广州黑格力斯教育科技有限公司
+  </div>
+</div>
+<script src="../static/layui-v2.3.0/layui/layui.js" charset="utf-8"></script>
+<script src="../static/js/common.js" charset="utf-8"></script>
+<script>
+
+
+
+
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+</script>
+<script type="text/javascript">
+	function dynamicLoadCss(url) {
+	var head = document.getElementsByTagName('head')[0];
+	var link = document.createElement('link');
+	link.type='text/css';
+	link.rel = 'stylesheet';
+	link.href = url;
+	head.appendChild(link);
+}
+    // dynamicLoadCss('../static/js/db.js?ran='+Math.random())
+</script>
+</body>
+</html>

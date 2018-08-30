@@ -1,0 +1,134 @@
+{% include '/common/header.html' %}
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+      	{% include '/archives/nav.html' %}
+      </ul>
+    </div>
+  </div>
+  <div class="layui-body">
+  	<form method="" action="" class="layui-form">
+	  <div class="layui-row" style="padding-bottom: 0px;">
+	   	<div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">关键字</label>
+		      <div class="layui-input-inline">
+		        <input type="tel" name="phone" placeholder="校区名称/校长姓名" lay-verify="required|phone" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		  
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><button class="layui-btn" lay-submit lay-filter="submit">搜索</button></label>
+		    </div>
+		    <div class="layui-inline" style="float: right;">
+		      <label class="layui-form-label">
+		      	<a href="addCampus.html">
+			      	<button class="layui-btn layui-btn-normal" type="button" >
+			  			<i class="layui-icon">&#xe608;</i> 添加
+			  		</button>
+		      	</a>
+		      </label>
+		    </div>
+		    
+	  	</div>
+	  </div>
+	</form>
+    <!-- 内容主体区域 -->
+    <table class="layui-table" lay-filter="table">
+	  <colgroup>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col width="150">
+	  </colgroup>
+	  <thead>
+	    <tr>
+	      <th>校区ID</th>
+	      <th>校区名称</th>
+	      <th>校长姓名</th>
+	      <th>校长手机</th>
+	      <th>办公电话</th>
+	      <th>办公地址</th>
+	      <th>创建时间</th>
+	      <th>状态</th>
+	      <th>备注</th>
+	      <th>操作</th>
+	    </tr> 
+	  </thead>
+	  <tbody>
+	    <tr>
+		  <td>1</td>
+	      <td>白云校区</td>
+	      <td>某某某</td>
+	      <td>13888888888</td>
+	      <td>020-88888888</td>
+	      <td>广东省广州市白云区永平街道永泰学山塘大街81号A2栋5楼</td>
+	      <td>2018-08-22 10:22:22</td>
+	      <td><i class="layui-icon layui-icon-ok" style="color: #009688"></td>
+	      <td>dddddddd</td>
+	      <td>
+		      <div class="layui-table-cell laytable-cell-1-9"> 
+			      <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> 
+			      <a class="layui-btn layui-btn-xs" lay-event="edit" href="addCampus.html">编辑</a> 
+			      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> 
+		      </div>
+	      </td>
+	    </tr>
+	    <tr>
+		  <td>1</td>
+	      <td>车陂校区</td>
+	      <td>某某</td>
+	      <td>13666666666</td>
+	      <td>020-66666666</td>
+	      <td>广东省广州市天河区车陂</td>
+	      <td>2018-08-22 10:22:22</td>
+	      <td><i class="layui-icon layui-icon-close" style="color: #f00"></td>
+	      <td>备注备注备注备注备注备注备注备注备注备注备注</td>
+	      <td>
+		      <div class="layui-table-cell laytable-cell-1-9"> 
+			      <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> 
+			      <a class="layui-btn layui-btn-xs" lay-event="edit" href="addCampus.html">编辑</a> 
+			      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> 
+		      </div>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+	<div id="page" style="text-align: right;"></div>
+
+  </div>
+{% include '/common/footer.html' %}
+<script>
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  
+  //执行一个laypage实例
+  laypage.render({
+    elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: 50 //数据总数，从服务端得到
+    ,limit:20//没有显示条数
+     ,jump: function(obj, first){
+    //obj包含了当前分页的所有参数，比如：
+    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+    console.log(obj.limit); //得到每页显示的条数
+    
+    //首次不执行
+    if(!first){
+      //do something
+    }
+  }
+  });
+});
+</script>
+
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+});
+</script>
+

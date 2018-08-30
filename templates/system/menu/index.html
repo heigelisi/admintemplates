@@ -1,0 +1,115 @@
+{% include '/common/header.html' %}
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+       	<li class="layui-nav-item layui-nav-itemed"><a href="index.html">菜单管理</a></li>
+        <li class="layui-nav-item"><a href="adminList.html">管理员管理</a></li>
+        <li class="layui-nav-item"><a href="roleList.html">角色管理</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+  	<form method="post" action="" >
+	  <div class="layui-row" style="padding-bottom: 0px;">
+	   	<div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">验证手机</label>
+		      <div class="layui-input-inline">
+		        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">验证邮箱</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><button class="layui-btn">搜索</button></label>
+		    </div>
+		    <div class="layui-inline" style="float: right;">
+		      <label class="layui-form-label">
+		      	<a href="addMenu.html">
+			      	<button class="layui-btn layui-btn-normal" type="button" >
+			  			<i class="layui-icon">&#xe608;</i> 添加
+			  		</button>
+		      	</a>
+		      </label>
+		    </div>
+		    
+	  	</div>
+	  </div>
+	</form>
+	 
+    <!-- 内容主体区域 -->
+    <table class="layui-table">
+	  <colgroup>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col width="150">
+	  </colgroup>
+	  <thead>
+	    <tr>
+	      <th style="text-align: center;">菜单ID</th>
+	      <th style="text-align: center;">菜单名称</th>
+	      <th style="text-align: center;">上级菜单</th>
+	      <th style="text-align: center;">菜单URL</th>
+	      <th style="text-align: center;">授权标识</th>
+	      <th style="text-align: center;">备注</th>
+	      <th style="text-align: center;">操作</th>
+	    </tr> 
+	  </thead>
+	  <tbody>
+	    <tr>
+		  <td>1</td>
+	      <td>添加管理员</td>
+	      <td>系统管理</td>
+	      <td>Admin/add</td>
+	      <td>Admin@add</td>
+	      <td>添加管理员</td>
+	      <td><div class="layui-table-cell laytable-cell-1-9"> <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a> <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> </div></td>
+	    </tr>
+	    <tr>
+		  <td>2</td>
+	      <td>添加管理员</td>
+	      <td>系统管理</td>
+	      <td>Admin/add</td>
+	      <td>Admin@add</td>
+	      <td>添加管理员</td>
+	      <td><div class="layui-table-cell laytable-cell-1-9"> <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a> <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> </div></td>
+	    </tr>
+	  </tbody>
+	</table>
+	<div id="page" style="text-align: right;"></div>
+
+  </div>
+{% include '/common/footer.html' %}
+<script>
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  
+  //执行一个laypage实例
+  laypage.render({
+    elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: 50 //数据总数，从服务端得到
+    ,limit:20//没有显示条数
+     ,jump: function(obj, first){
+    //obj包含了当前分页的所有参数，比如：
+    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+    console.log(obj.limit); //得到每页显示的条数
+    
+    //首次不执行
+    if(!first){
+      //do something
+    }
+  }
+  });
+});
+</script>
+

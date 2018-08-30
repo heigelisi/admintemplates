@@ -1,0 +1,104 @@
+{% include '/common/header.html' %}
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a href="index.html">菜单管理</a></li>
+        <li class="layui-nav-item"><a href="adminList.html">管理员管理</a></li>
+        <li class="layui-nav-item layui-nav-itemed"><a href="roleList.html">角色管理</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+  <div class="layui-row"></div>
+  <div class="layui-col-md11">
+  	<form class="layui-form" action="">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">角色名称</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" required  lay-verify="required" placeholder="请输入角色名称" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">功能权限</label>
+      <div class="layui-input-block">
+      <li class="top"><input type="checkbox" name="system" lay-filter="top" title="系统管理" lay-skin="primary"></li>
+        <input type="checkbox" name="system[1]" title="超级管理员" lay-skin="primary">
+        <input type="checkbox" name="system[2]" title="财务" lay-skin="primary">
+        <input type="checkbox" name="system[3]" title="校长" lay-skin="primary">
+        <input type="checkbox" name="system[4]" title="网站编辑" lay-skin="primary">
+      <li class="top"><input type="checkbox" name="archives" lay-filter="top" title="基础档案" lay-skin="primary"> </li>
+        <input type="checkbox" name="archives[1]" title="超级管理员" lay-skin="primary">
+        <input type="checkbox" name="archives[2]" title="财务"  lay-skin="primary">
+        <input type="checkbox" name="archives[3]" title="校长" lay-skin="primary">
+        <input type="checkbox" name="archives[4]" title="网站编辑" lay-skin="primary">
+      </div>
+   </div>
+
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">备注</label>
+      <div class="layui-input-block">
+        <textarea name="note" placeholder="请输入内容" class="layui-textarea"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+
+{% include '/common/footer.html' %}
+
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  //监听提交
+  form.on('submit(submit)', function(data){
+    console.log(JSON.stringify(data.field))
+     // addMenu(data.field);
+     layer.msg('添加成功',function(){
+      window.location.href="roleList.html";
+     });
+
+    return false;
+
+  });
+//全选
+form.on('checkbox(top)', function(data){
+  var checked = data.elem.checked;
+  var name = data.elem.name;
+  if(checked == true){
+    $("input[name^="+name+"]").prop("checked", true);
+    form.render('checkbox');
+  }else{
+    $("input[name^="+name+"]").prop("checked", false);
+    form.render('checkbox');
+  }
+});
+
+});
+</script>
+<script type="text/javascript">
+
+$('.top').on('click',function(){
+  var name = $(this).find('input').attr('name');
+  var checkbox = $('input[name^='+name+']');
+  // for (var i in checkbox){
+  //   console.log($(checkbox[i]).attr('checked','checked'));
+
+  // }
+  
+})
+
+</script>
+
+
+

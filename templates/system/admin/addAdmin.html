@@ -1,0 +1,138 @@
+{% include '/common/header.html' %}
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a href="index.html">菜单管理</a></li>
+        <li class="layui-nav-item layui-nav-itemed"><a href="adminList.html">管理员管理</a></li>
+        <li class="layui-nav-item"><a href="roleList.html">角色管理</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+  <div class="layui-row"></div>
+  <div class="layui-col-md11">
+  	<form class="layui-form" action="">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">姓名</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">性别</label>
+      <div class="layui-input-block">
+        <input type="radio" name="sex" value="女" title="女">
+        <input type="radio" name="sex" value="男" title="男" checked>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">手机号</label>
+      <div class="layui-input-block">
+        <input type="text" name="mobile" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">密码</label>
+      <div class="layui-input-block">
+        <input type="text" name="mobile" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">校区</label>
+      <div class="layui-input-block">
+        <select name="campus" lay-verify="required">
+          <option value="0">选择校区</option>
+          <option value="1">白云校区</option>
+          <option value="2">车陂校区</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">角色权限</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like[write]" title="超级管理员">
+        <input type="checkbox" name="like[read]" title="系统管理员" >
+        <input type="checkbox" name="like[dai]" title="班主任">
+        <input type="checkbox" name="like[dai]" title="任课教师">
+        <input type="checkbox" name="like[dai]" title="商品管理员">
+        <input type="checkbox" name="like[dai]" title="订单审核员">
+        <input type="checkbox" name="like[dai]" title="销售管理员" checked>
+      </div>
+   </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">账号状态</label>
+      <div class="layui-input-block">
+        <input type="checkbox" checked name="switch" value="1" lay-skin="switch">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">头像</label>
+      <div class="layui-input-block">
+       <button type="button" class="layui-btn" style="background-color: #5FB878;" id="upload">
+       <i class="layui-icon"></i>上传头像</button>
+      </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">备注</label>
+      <div class="layui-input-block">
+        <textarea name="note" placeholder="请输入内容" class="layui-textarea"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+
+{% include '/common/footer.html' %}
+
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  //监听提交
+  form.on('submit(submit)', function(data){
+    // JSON.stringify(data.field)
+     // addMenu(data.field);
+     layer.msg('添加成功',function(){
+      window.location.href="adminList.html";
+     });
+
+    return false;
+
+  });
+});
+</script>
+<script>
+layui.use('upload', function(){
+  var upload = layui.upload;
+   
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#upload' //绑定元素
+    ,url: '/upload/' //上传接口
+    ,done: function(res){
+      //上传完毕回调
+    }
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+});
+</script>
+

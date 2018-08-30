@@ -1,0 +1,172 @@
+{% include '/common/header.html' %}
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+      	<li class="layui-nav-item"><a href="index.html">菜单管理</a></li>
+        <li class="layui-nav-item layui-nav-itemed"><a href="adminList.html">管理员管理</a></li>
+        <li class="layui-nav-item"><a href="roleList.html">角色管理</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+  	<form method="" action="" class="layui-form">
+	  <div class="layui-row" style="padding-bottom: 0px;">
+	   	<div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">关键字</label>
+		      <div class="layui-input-inline">
+		        <input type="tel" name="phone" placeholder="用户名/手机号" lay-verify="required|phone" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+
+		    <div class="layui-inline">
+		      <label class="layui-form-label">校区</label>
+		     <div class="layui-input-inline">
+		      <select name="campus">
+		        <option value="">请选校区</option>
+		        <option value="白云校区">白云校区</option>
+		        <option value="番禺校区" disabled="">番禺校区</option>
+		        <option value="永泰校区">永泰校区</option>
+		      </select>
+		    </div>
+		    </div>
+		  
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><button class="layui-btn" lay-submit lay-filter="submit">搜索</button></label>
+		    </div>
+		    <div class="layui-inline" style="float: right;">
+		      <label class="layui-form-label">
+		      	<a href="addAdmin.html">
+			      	<button class="layui-btn layui-btn-normal" type="button" >
+			  			<i class="layui-icon">&#xe608;</i> 添加
+			  		</button>
+		      	</a>
+		      </label>
+		    </div>
+		    
+	  	</div>
+	  </div>
+	</form>
+	 
+    <!-- 内容主体区域 -->
+    <table class="layui-table" lay-filter="table">
+	  <colgroup>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col>
+	    <col width="150">
+	  </colgroup>
+	  <thead>
+	    <tr>
+	      <th>用户ID</th>
+	      <th>头像</th>
+	      <th>用户名称</th>
+	      <th>性别</th>
+	      <th>手机号</th>
+	      <th>密码</th>
+	      <th>所属校区</th>
+	      <th>角色权限</th>
+	      <th>账号状态</th>
+	      <th>创建时间</th>
+	      <th>操作</th>
+	    </tr> 
+	  </thead>
+	  <tbody>
+	    <tr>
+		  <td>1</td>
+	      <td><img style="height: 30px;" src="http://t.cn/RCzsdCq"></td>
+	      <td>周飞</td>
+	      <td>男</td>
+	      <td>13539993040</td>
+	      <td>123456</td>
+	      <td>白云校区</td>
+	      <td>超级管理员</td>
+	      <td><i class="layui-icon layui-icon-ok" style="color: #009688"></td>
+	      <td>2018-08-22 10:22:22</td>
+	      <td>
+		      <div class="layui-table-cell laytable-cell-1-9"> 
+			      <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> 
+			      <a class="layui-btn layui-btn-xs" lay-event="edit" href="addAdmin.html">编辑</a> 
+			      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> 
+		      </div>
+	      </td>
+	    </tr>
+	    <tr>
+		  <td>2</td>
+	      <td><img style="height: 30px;" src="http://t.cn/RCzsdCq"></td>
+	      <td>周飞</td>
+	      <td>男</td>
+	      <td>13539993040</td>
+	      <td>123456</td>
+	      <td>白云校区</td>
+	      <td>超级管理员</td>
+	      <td><i class="layui-icon layui-icon-ok" style="color: #009688"></td>
+	      <td>2018-08-22 10:22:22</td>
+	      <td>
+		      <div class="layui-table-cell laytable-cell-1-9"> 
+			      <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> 
+			      <a class="layui-btn layui-btn-xs" lay-event="edit" href="addAdmin.html">编辑</a> 
+			      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> 
+		      </div>
+	      </td>
+	    </tr>
+	    <tr>
+		  <td>3</td>
+	      <td><img style="height: 30px;" src="http://t.cn/RCzsdCq"></td>
+	      <td>周飞</td>
+	      <td>男</td>
+	      <td>13539993040</td>
+	      <td>123456</td>
+	      <td>白云校区</td>
+	      <td>超级管理员</td>
+	      <td><i style="color: #f00;" class="layui-icon layui-icon-close"></td>
+	      <td>2018-08-22 10:22:22</td>
+	      <td>
+		      <div class="layui-table-cell laytable-cell-1-9"> 
+			      <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> 
+			      <a class="layui-btn layui-btn-xs" lay-event="edit" href="addAdmin.html">编辑</a> 
+			      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> 
+		      </div>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+	<div id="page" style="text-align: right;"></div>
+
+  </div>
+{% include '/common/footer.html' %}
+<script>
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  
+  //执行一个laypage实例
+  laypage.render({
+    elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: 50 //数据总数，从服务端得到
+    ,limit:20//没有显示条数
+     ,jump: function(obj, first){
+    //obj包含了当前分页的所有参数，比如：
+    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+    console.log(obj.limit); //得到每页显示的条数
+    
+    //首次不执行
+    if(!first){
+      //do something
+    }
+  }
+  });
+});
+</script>
+
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+});
+</script>
+

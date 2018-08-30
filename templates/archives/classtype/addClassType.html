@@ -1,0 +1,148 @@
+{% include '/common/header.html' %}
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        {% include '/archives/campus/nav.html' %}
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+  <div class="layui-row"></div>
+  <div class="layui-col-md11">
+  	<form class="layui-form" action="">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">校区名称</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" required  lay-verify="required" placeholder="请输入校区名称" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">校长姓名</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" required  lay-verify="required" placeholder="请输入校长姓名" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+  <!--   <div class="layui-form-item">
+      <label class="layui-form-label">性别</label>
+      <div class="layui-input-block">
+        <input type="radio" name="sex" value="女" title="女">
+        <input type="radio" name="sex" value="男" title="男" checked>
+      </div>
+    </div> -->
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">校长手机号</label>
+      <div class="layui-input-block">
+        <input type="text" name="mobile" required  lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">办公电话</label>
+      <div class="layui-input-block">
+        <input type="text" name="mobile" required  lay-verify="required" placeholder="请输入办公电话" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">办公地址</label>
+    <div class="layui-input-inline">
+      <select name="province" id="province_">
+        <option value="">请选择省</option>
+        <option value="浙江" selected>浙江省</option>
+        <option value="你的工号">江西省</option>
+        <option value="你最喜欢的老师">福建省</option>
+      </select>
+    </div>
+    <div class="layui-input-inline">
+      <select name="city" id="city_">
+        <option value="">请选择市</option>
+        <option value="杭州">杭州</option>
+        <option value="宁波" disabled>宁波</option>
+        <option value="温州">温州</option>
+        <option value="温州">台州</option>
+        <option value="温州">绍兴</option>
+      </select>
+    </div>
+    <div class="layui-input-inline">
+      <select name="area" id="area_">
+        <option value="">请选择县/区</option>
+        <option value="西湖区">西湖区</option>
+        <option value="余杭区">余杭区</option>
+        <option value="拱墅区">临安市</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">详细地址</label>
+      <div class="layui-input-block">
+        <input type="text" name="mobile" required  lay-verify="required" placeholder="请输入办公详细地址" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">状态</label>
+      <div class="layui-input-block">
+        <input type="checkbox" checked name="switch" value="1" lay-skin="switch">
+      </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">备注</label>
+      <div class="layui-input-block">
+        <textarea name="note" placeholder="请输入内容" class="layui-textarea"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+
+{% include '/common/footer.html' %}
+
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  //监听提交
+  form.on('submit(submit)', function(data){
+    // JSON.stringify(data.field)
+     // addMenu(data.field);
+     layer.msg('添加成功',function(){
+      window.location.href="campusList.html";
+     });
+
+    return false;
+
+  });
+});
+</script>
+<script>
+layui.use('upload', function(){
+  var upload = layui.upload;
+   
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#upload' //绑定元素
+    ,url: '/upload/' //上传接口
+    ,done: function(res){
+      //上传完毕回调
+    }
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+});
+</script>

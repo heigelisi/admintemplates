@@ -1,0 +1,23 @@
+#系统管理
+	system/menu/index.html 菜单列表
+	system/menu/addMenu.html 添加菜单
+
+	system/admin/adminList.html 管理员列表
+	system/admin/addAdmin.html 添加管理员
+
+	system/role/roleList.html 角色管理
+	system/role/addRole.html 添加角色
+
+#基础档案
+	校区档案
+		archives/campus/campusList.html 校区列表
+		archives/campus/addCampus.html 添加校区 --地址须获取地址坐标值存储到数据库
+
+	班型档案
+		archives/classtype/classTypeList.html 班型列表
+		archives/classtype/addClassType.html  添加班型
+
+
+
+
+

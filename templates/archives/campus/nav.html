@@ -1,0 +1,19 @@
+<li class="layui-nav-item"><a href="campusList.html">校区档案</a></li>
+<li class="layui-nav-item"><a href="classtype.html">班型档案</a></li>
+<li class="layui-nav-item"><a href="roleList.html">课室档案</a></li>
+<li class="layui-nav-item"><a href="roleList.html">课程档案</a></li>
+<li class="layui-nav-item"><a href="roleList.html">渠道档案</a></li>
+<script type="text/javascript">
+	var nav = $('.layui-nav-item a');
+    for(var i in nav){
+      try{
+        
+        if($(nav[i]).attr('href') == window.location.pathname.substr(1)){
+          $(nav[i]).css('color','#fff');
+        }
+      }catch{
+
+      }
+      
+    }
+</script>
